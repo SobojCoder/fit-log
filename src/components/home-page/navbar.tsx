@@ -1,38 +1,24 @@
+'use client'
 import Image from "next/image";
 import React from "react";
 import logo from "@/assets/logo.png";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const NavbarPage = () => {
+  const pathname = usePathname();
   const links = (
     <>
-      <li className="text-[##8A909B] hover:bg-[#15171D] py-3 px-5 rounded-2xl">
-        <Link href="workout">Workouts</Link>
+      <li>
+        <Link className={`${pathname === '/' ? 'text-[#CCFF00] border-0 rounded-2xl bg-[#1A2312] px-5 py-2' : ''} `} href="/">Workouts</Link>
       </li>
 
-      <li className="hover:bg-[#15171D] py-3 px-5 rounded-2xl">
-        <Link href="/my-plan">My Plan</Link>
+      <li>
+        <Link  href="/my-plan">My Plan</Link>
       </li>
     </>
   );
   return (
-    // <div className="">
-    //   <div className="navbar navbar-center">
-    //     <div className="flex gap-3">
-    //       <Image src={logo} alt="logo" className="w-[25px] h-auto" />
-    //       <Link href="/">FITLOG</Link>
-    //     </div>
-    //     <div>
-    //       <ul className="flex gap-4">
-    //         {links}
-    //     </ul>
-    //     </div>
-    //     <div>
-    //       <button>plan</button>
-    //     </div>
-    //   </div>
-    // </div>
-
 
     <div className="border-b border-[#222630]">
       <div className="navbar  bg-[#000000] shadow-sm container mx-auto">
