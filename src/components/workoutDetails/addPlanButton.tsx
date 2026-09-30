@@ -3,12 +3,13 @@ import { WorkoutContext } from "@/contexts/workoutProvider";
 import { IWorkout } from "@/types/workout.type";
 import { CalendarPlus } from "lucide-react";
 import React, { useContext } from "react";
+import { toast } from "react-toastify";
 
 const AddPlanButton = ({ workout }: { workout: IWorkout }) => {
   const {addPlan , setAddPlan} = useContext(WorkoutContext)
     const heandleAddPlan= () =>{
-        console.log(workout);
         setAddPlan([...addPlan, workout])
+        toast.success(`${workout.name} add to today's plan`);
     }
   return (
     <div>
