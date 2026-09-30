@@ -1,8 +1,9 @@
 "use client";
+import TodayPlanCard from "@/components/cards/todayPlanCard";
 import WorkoutMyPlanCard from "@/components/cards/workoutMyPlanCard";
 import { WorkoutContext } from "@/contexts/workoutProvider";
 import { IWorkout } from "@/types/workout.type";
-import { Link } from "lucide-react";
+import Link from "next/link";
 import React, { useContext } from "react";
 
 const MyPlanPage = () => {
@@ -30,22 +31,68 @@ const MyPlanPage = () => {
         </div>
       </div>
 
-        {
-            addPlan.length >0 ? addPlan.map((workout:IWorkout) => { 
-                return <WorkoutMyPlanCard key={workout.id} workout={workout} />
-            }):
-      <div className="border border-dotted border-[#5D636F] bg-[#101216] rounded-2xl my-8 py-15 text-center">
-        <div>
-          <h2 className="text-3xl font-bold">NOTHING HERE YET</h2>
-          <p className="text-[#5D636F] mt-2 mb-4">
-            Browse the library and add a lift to get today moving.
-          </p>
-          <button className="btn rounded-3xl bg-[#CCFF00] text-[#101216]">
-            Go to Workout
-          </button>
+      
+        <div className="tabs tabs-box my-10">
+          <input
+            type="radio"
+            name="my_tabs_1"
+            className="tab"
+            aria-label="Tab 1"
+          />
+          
+          <div className="tab-content border-[#5D636F] bg-[#101216] text-center ">
+            {addPlan.length > 0 ? (
+        addPlan.map((workout: IWorkout) => {
+          return <TodayPlanCard key={workout.id} workout={workout} />;
+        })
+        ):(
+            <div className="py-15">
+              <h2 className="text-3xl font-bold">NOTHING HERE YET</h2>
+              <p className="text-[#5D636F] mt-2 mb-4">
+                Browse the library and add a lift to get today moving.
+              </p>
+              <Link href="/">
+                <button className="btn rounded-3xl bg-[#CCFF00] text-[#101216]">
+                  Go to Workout
+                </button>
+              </Link>
+            </div>  
+        )}
+      
+          </div>
+        
+          <input
+            type="radio"
+            name="my_tabs_1"
+            className="tab"
+            aria-label="Tab 2"
+            defaultChecked
+          />
+          
+          <div className="tab-content border-[#5D636F] bg-[#101216] text-center">
+            {addPlan.length > 0 ? (
+        addPlan.map((workout: IWorkout) => {
+          return <TodayPlanCard key={workout.id} workout={workout} />;
+        })
+        ):(
+          
+            <div className="py-15">
+              <h2 className="text-3xl font-bold">NOTHING HERE YET</h2>
+              <p className="text-[#5D636F] mt-2 mb-4">
+                Browse the library and add a lift to get today moving.
+              </p>
+              <Link href="/">
+                <button className="btn rounded-3xl bg-[#CCFF00] text-[#101216]">
+                  Go to Workout
+                </button>
+              </Link>
+            </div>
+        )}
+          </div>
         </div>
-      </div>
-        }
+      
+
+     
     </div>
   );
 };
