@@ -1,12 +1,14 @@
+
 import { IWorkout } from "@/types/workout.type";
 import { Clock3, Flame, Star } from "lucide-react";
 import Image from "next/image";
 import React from "react";
+import { IoIosClose } from "react-icons/io";
 
-const TodayPlanCard = ({ workout }: { workout: IWorkout }) => {
+const TodayPlanCard = ({workout}:{workout:IWorkout}) => {
   return (
-    <div className="container mx-auto border border-base-200 my-3">
-      <div  className="grid grid-cols-2">
+    <div className="container mx-auto border border-amber-200 rounded-2xl my-3">
+      <div className="grid grid-cols-2">
         <div className="flex p-4 gap-4">
           <div>
             <Image
@@ -41,10 +43,15 @@ const TodayPlanCard = ({ workout }: { workout: IWorkout }) => {
             </div>
           </div>
         </div>
-      </div>
-      <div>
-        <button>View Details</button>
-        <button>Mark as Down</button>
+        <div className="flex gap-3 items-center justify-end pr-6">
+          <button className=" cursor-pointer flex items-center gap-2 rounded-3xl     border border-zinc-700 px-5 py-2.5 text-xs font-medium text-zinc-300 transition hover:bg-zinc-800">
+            View Details
+          </button>
+          <button className="cursor-pointer flex items-center gap-2 rounded-3xl bg-[#c6ff00] px-5 py-2.5 text-xs font-bold text-black transition hover:bg-[#b8f000]">
+            Mark as Done
+          </button>
+          <IoIosClose className="font-bold text-2xl" />
+        </div>
       </div>
     </div>
   );

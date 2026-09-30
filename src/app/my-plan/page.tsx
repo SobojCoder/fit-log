@@ -1,13 +1,14 @@
 "use client";
-import TodayPlanCard from "@/components/cards/todayPlanCard";
-import WorkoutMyPlanCard from "@/components/cards/workoutMyPlanCard";
-import { WorkoutContext } from "@/contexts/workoutProvider";
-import { IWorkout } from "@/types/workout.type";
-import Link from "next/link";
-import React, { useContext } from "react";
+import SavedWorkoutPlan from "@/components/savedWorkoutPlan";
+import TodayWorkoutPlan from "@/components/todayWorkoutPlan";
+import React, { useState } from "react";
 
 const MyPlanPage = () => {
-  const { addPlan } = useContext(WorkoutContext);
+  const [buttonType, setButtonType] = useState("selected");
+  const heandleUpdatedBtn = (type: "selected" | "seved") => {
+    setButtonType(type);
+  };
+
   return (
     <div className="container mx-auto">
       <div className="mb-6 mt-10">
@@ -31,70 +32,43 @@ const MyPlanPage = () => {
         </div>
       </div>
 
-      
-        <div className="tabs tabs-box my-10">
-          <input
-            type="radio"
-            name="my_tabs_1"
-            className="tab"
-            aria-label="Tab 1"
-          />
-          
-          <div className="tab-content border-[#5D636F] bg-[#101216] text-center ">
-            {addPlan.length > 0 ? (
-        addPlan.map((workout: IWorkout) => {
-          return <TodayPlanCard key={workout.id} workout={workout} />;
-        })
-        ):(
-            <div className="py-15">
-              <h2 className="text-3xl font-bold">NOTHING HERE YET</h2>
-              <p className="text-[#5D636F] mt-2 mb-4">
-                Browse the library and add a lift to get today moving.
-              </p>
-              <Link href="/">
-                <button className="btn rounded-3xl bg-[#CCFF00] text-[#101216]">
-                  Go to Workout
-                </button>
-              </Link>
-            </div>  
-        )}
-      
-          </div>
-        
-          <input
-            type="radio"
-            name="my_tabs_1"
-            className="tab"
-            aria-label="Tab 2"
-            defaultChecked
-          />
-          
-          <div className="tab-content border-[#5D636F] bg-[#101216] text-center">
-            {addPlan.length > 0 ? (
-        addPlan.map((workout: IWorkout) => {
-          return <TodayPlanCard key={workout.id} workout={workout} />;
-        })
-        ):(
-          
-            <div className="py-15">
-              <h2 className="text-3xl font-bold">NOTHING HERE YET</h2>
-              <p className="text-[#5D636F] mt-2 mb-4">
-                Browse the library and add a lift to get today moving.
-              </p>
-              <Link href="/">
-                <button className="btn rounded-3xl bg-[#CCFF00] text-[#101216]">
-                  Go to Workout
-                </button>
-              </Link>
-            </div>
-        )}
+      <div className="flex justify-between mt-8">
+        {/* selected button */}
+        <div>
+          <div className="flex border border-[#5D646F]  bg-[#15161b] p-1 rounded-lg">
+            <button
+              onClick={() => heandleUpdatedBtn("selected")}
+              className={`cursor-pointer px-4 py-2 ${buttonType === "selected" ? "text-[#FFFFFF] bg-[#1F242D] rounded-xl" : ""}`}
+            >
+              Today's Plan
+            </button>
+            <button
+              onClick={() => heandleUpdatedBtn("seved")}
+              className={` cursor-pointer px-4 py-2 ${buttonType === "seved" ? "text-[#FFFFFF] bg-[#1F242D] rounded-xl" : ""}`}
+            >
+              Seved
+            </button>
           </div>
         </div>
-      
 
-     
+        {/* sort by */}
+
+        <div className="flex items-center gap-2">
+          <span className="text-xs text-[#737985]">Sort By</span>
+
+          <select className="rounded-lg border border-[#343A47] bg-[#15181F] px-3 py-2 text-xs text-white outline-none">
+            <option>Duration</option>
+            <option>Calories</option>
+            <option>Rating</option>
+          </select>
+        </div>
+      </div>
+      {buttonType === "selected" ? <TodayWorkoutPlan /> : <SavedWorkoutPlan />}
+
+      {/* selected card */}
     </div>
   );
 };
 
 export default MyPlanPage;
+
