@@ -3,16 +3,17 @@ import TodayPlanCard from './cards/todayPlanCard';
 import { IWorkout } from '@/types/workout.type';
 import { WorkoutContext } from '@/contexts/workoutProvider';
 import Link from 'next/link';
+import SavedPlanCard from './cards/savedPlanCard';
 
 const SavedWorkoutPlan = () => {
-    const { addPlan } = useContext(WorkoutContext);
+    const { addToSaved } = useContext(WorkoutContext);
 
     return (
         <div className='my-10'>
-        {addPlan.length > 0 ? (
+        {addToSaved.length > 0 ? (
           <div>
-            {addPlan.map((workout: IWorkout) => {
-              return <TodayPlanCard key={workout.id} workout={workout} />;
+            {addToSaved.map((workout: IWorkout) => {
+              return <SavedPlanCard key={workout.id} workout={workout} />;
             })}
           </div>
         ) : (

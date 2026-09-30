@@ -1,19 +1,36 @@
-'use client'
-import { IWorkout } from '@/types/workout.type';
-import React, { createContext, ReactNode, useState } from 'react';
+"use client";
+import { IWorkout } from "@/types/workout.type";
+import React, { createContext, ReactNode, useState } from "react";
 
-export const WorkoutContext = createContext({});
+interface IWorkoutContext {
+  addPlan: IWorkout[];
+  setAddPlan: React.Dispatch<React.SetStateAction<IWorkout[]>>;
+  addToSaved: IWorkout[];
+  setAddToSave: React.Dispatch<React.SetStateAction<IWorkout[]>>;
+}
 
-const WorkoutProvider = ({children}:{children: ReactNode}) => {
-    const [addPlan , setAddPlan] = useState<IWorkout[]>([])
-    
-    const shareData = {
-        addPlan,
-        setAddPlan
-    }
-    return (
-        <WorkoutContext.Provider value={shareData}>{children}</WorkoutContext.Provider>
-    );
+export const WorkoutContext = createContext<IWorkoutContext>({
+  addPlan: [],
+  setAddPlan: () => {},
+  addToSaved: [],
+  setAddToSave: () => {},
+});
+
+const WorkoutProvider = ({ children }: { children: ReactNode }) => {
+  const [addPlan, setAddPlan] = useState<IWorkout[]>([]);
+  const [addToSaved, setAddToSave] = useState<IWorkout[]>([]);
+
+  const shareData = {
+    addPlan,
+    setAddPlan,
+    addToSaved,
+    setAddToSave,
+  };
+  return (
+    <WorkoutContext.Provider value={shareData}>
+      {children}
+    </WorkoutContext.Provider>
+  );
 };
 
 export default WorkoutProvider;

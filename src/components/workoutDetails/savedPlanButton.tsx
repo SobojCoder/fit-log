@@ -6,16 +6,15 @@ import React, { useContext } from "react";
 import { toast } from "react-toastify";
 
 const SavedPlanButton = ({ workout }: { workout: IWorkout }) => {
-  const {addPlan , setAddPlan} = useContext(WorkoutContext)
-    const heandleAddPlan= () =>{
-        console.log(workout);
-        setAddPlan([...addPlan, workout]);
+  const {addToSaved , setAddToSave} = useContext(WorkoutContext)
+    const heandleAddToSaved= () =>{
+        setAddToSave([...addToSaved, workout]);
         toast.success(`${workout.name} add to saved for later`);
     }
   return (
     <div>
       <button
-      onClick={() => heandleAddPlan()}
+      onClick={() => heandleAddToSaved()}
       className="cursor-pointer flex items-center gap-2 rounded-lg bg-[#c6ff00] px-5 py-2.5 text-xs font-bold text-black transition hover:bg-[#b8f000]">
         <Bookmark size={15} />
         Seved for later

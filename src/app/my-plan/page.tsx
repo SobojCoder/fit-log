@@ -10,7 +10,7 @@ const MyPlanPage = () => {
   };
 
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto my-12">
       <div className="mb-6 mt-10">
         <h1 className="text-4xl font-bold">MY PLAN</h1>
         <p className="text-[#5D636F]">
@@ -35,16 +35,16 @@ const MyPlanPage = () => {
       <div className="flex justify-between mt-8">
         {/* selected button */}
         <div>
-          <div className="flex border border-[#5D646F]  bg-[#15161b] p-1 rounded-lg">
+          <div className="flex border border-[#5D646F]  bg-[#151921] p-1.5 rounded-2xl">
             <button
               onClick={() => heandleUpdatedBtn("selected")}
-              className={`cursor-pointer px-4 py-2 ${buttonType === "selected" ? "text-[#FFFFFF] bg-[#1F242D] rounded-xl" : ""}`}
+              className={`cursor-pointer px-4 py-1.25 ${buttonType === "selected" ? "text-[#CCFF00] bg-[#1F242D] rounded-xl" : ""}`}
             >
-              Today's Plan
+              Today&apos;s Plan
             </button>
             <button
               onClick={() => heandleUpdatedBtn("seved")}
-              className={` cursor-pointer px-4 py-2 ${buttonType === "seved" ? "text-[#FFFFFF] bg-[#1F242D] rounded-xl" : ""}`}
+              className={` cursor-pointer px-4 py-1.25 ${buttonType === "seved" ? "text-[#CCFF00] bg-[#1F242D]  rounded-xl" : ""}`}
             >
               Seved
             </button>
