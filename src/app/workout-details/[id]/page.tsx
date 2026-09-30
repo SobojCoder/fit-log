@@ -1,3 +1,4 @@
+import AddPlanButton from "@/components/workoutDetails/addPlanButton";
 import { getWortkouts } from "@/lib/app";
 import { IWorkout } from "@/types/workout.type";
 import { Bookmark, CalendarPlus, Star } from "lucide-react";
@@ -16,7 +17,6 @@ const AppDetailsPage = async ({ params }: IWorkoutDetailsProps) => {
   const workout = workouts.find(
     (workout: IWorkout) => String(workout.id) === String(id)
   );
-  console.log(workout);
   return (
     <div className="bg-[#0F1014]  py-8 text-white">
       <div className="mx-auto grid max-w-6xl grid-cols-1 gap-8 lg:grid-cols-2">
@@ -154,10 +154,7 @@ const AppDetailsPage = async ({ params }: IWorkoutDetailsProps) => {
 
           {/* ================= BUTTONS ================= */}
           <div className="mt-6 flex flex-wrap gap-3">
-            <button className="flex items-center gap-2 rounded-lg bg-[#c6ff00] px-5 py-2.5 text-xs font-bold text-black transition hover:bg-[#b8f000]">
-              <CalendarPlus size={15} />
-              Add to today&apos;s plan
-            </button>
+            <AddPlanButton workout={workout} />
 
             <button className="flex items-center gap-2 rounded-lg border border-zinc-700 px-5 py-2.5 text-xs font-medium text-zinc-300 transition hover:bg-zinc-800">
               <Bookmark size={15} />

@@ -1,15 +1,11 @@
-import { IWorkout } from "@/types/workout.type";
-import { Clock3, Flame, Star } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
-import React from "react";
-interface IWorkoutCardProps {
-  workout: IWorkout,
-}
-const WorkoutsCard = ({ workout }: IWorkoutCardProps) => {
-  return (
-    <Link href={`/workout-details/${workout.id}`}>
-    <div>
+import { IWorkout } from '@/types/workout.type';
+import { Clock3, Flame, Star } from 'lucide-react';
+import Image from 'next/image';
+import React from 'react';
+
+const WorkoutMyPlanCard = ({workout}:{workout:IWorkout}) => {
+    return (
+        <div>
       <div className="group overflow-hidden rounded-2xl border border-zinc-800 bg-[#15161b] text-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl">
         {/* Image */}
         <div className="relative h-65 w-full overflow-hidden">
@@ -72,8 +68,7 @@ const WorkoutsCard = ({ workout }: IWorkoutCardProps) => {
         </div>
       </div>
     </div>
-    </Link>
-  );
+    );
 };
 
-export default WorkoutsCard;
+export default WorkoutMyPlanCard;

@@ -5,11 +5,11 @@ import Image from "next/image";
 
 const FooterPage = () => {
   return (
-    <div className="border-t border-[#222630] ">
+    <div className="border border-[#222630] ">
       <div className="container mx-auto py-8  ">
         <div className="grid grid-cols-2 items-center justify-between">
           <div className="flex">
-            <Image src={logo} alt="logo" className="w-[25px] h-auto" />
+            <Image src={logo} alt="logo" className="w-[20px] h-auto" />
             <Link href="/" className="btn btn-ghost text-2xl text-[#FFFFFF]">
               FITLOG
             </Link>

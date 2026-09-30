@@ -14,7 +14,7 @@ const NavbarPage = () => {
       </li>
 
       <li>
-        <Link  href="/my-plan">My Plan</Link>
+        <Link className={`${pathname === '/my-plan' ? 'text-[#CCFF00] border-0 rounded-2xl bg-[#1A2312] px-5 py-2' : ''} `}  href="/my-plan">My Plan</Link>
       </li>
     </>
   );
