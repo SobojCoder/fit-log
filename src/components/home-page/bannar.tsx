@@ -38,7 +38,7 @@ const BannarPage = () => {
           <Image
             src={banner}
             alt="Workout banner"
-            className="w-56 sm:w-72 lg:w-[350px] h-auto"
+            className="w-56 sm:w-72 lg:w-87.5 h-auto"
           />
         </div>
 
