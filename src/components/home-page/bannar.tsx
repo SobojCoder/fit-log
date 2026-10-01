@@ -3,6 +3,7 @@ import Image from "next/image";
 import React from "react";
 import banner from "@/assets/banner.png";
 import Link from "next/link";
+import { FiArrowDown } from "react-icons/fi";
 
 const BannarPage = () => {
   return (
@@ -27,6 +28,7 @@ const BannarPage = () => {
           <Link href="#library">
             <button className="bg-[#A1CE06] btn text-[#000000] px-6">
               BROWSE WORKOUTS
+              <FiArrowDown />
             </button>
           </Link>
         </div>

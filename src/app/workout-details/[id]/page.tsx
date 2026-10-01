@@ -5,6 +5,7 @@ import { getWortkouts } from "@/lib/app";
 import { IWorkout } from "@/types/workout.type";
 import { Star } from "lucide-react";
 import Image from "next/image";
+import { notFound } from "next/navigation";
 import React from "react";
 
 interface IWorkoutDetailsProps {
@@ -21,6 +22,10 @@ const AppDetailsPage = async ({ params }: IWorkoutDetailsProps) => {
   const workout = workouts.find(
     (workout: IWorkout) => String(workout.id) === String(id)
   );
+
+ if (!workout) {
+    notFound();
+  }
 
   return (
     <div className="min-h-screen bg-[#0F1014] px-4 py-6 text-white sm:px-6 sm:py-8 lg:px-8">

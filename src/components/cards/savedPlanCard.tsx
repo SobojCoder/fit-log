@@ -46,7 +46,7 @@ const SavedPlanCard = ({ workout }: { workout: IWorkout }) => {
             </h2>
 
             <p className="mt-0.5 text-sm text-zinc-400">
-              {workout.difficulty}
+              {workout.equipment}
             </p>
 
             {/* Stats */}

@@ -22,7 +22,7 @@ const NavbarPage = () => {
   );
   return (
 
-    <div className="border-b border-[#222630]">
+    <div className="sticky top-0 z-50 border-b border-[#222630]">
       <div className="navbar  bg-[#000000] shadow-sm container mx-auto">
         <div className="navbar-start">
             <div className="dropdown">
@@ -52,7 +52,7 @@ const NavbarPage = () => {
                 </ul>
             </div>
           <Image src={logo} alt="logo" className="w-6.25 h-auto" />
-          <Link href='/' className="btn btn-ghost text-2xl">FITLOG</Link>
+          <Link href='/' className="pl-2 font-bold text-2xl">FITLOG</Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="flex gap-3">

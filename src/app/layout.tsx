@@ -30,8 +30,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="min-h-full flex flex-col">
         <WorkoutProvider>
           <NavbarPage />
-          <div>{children}</div>
+          {children}
           <FooterPage />
+
           <ToastContainer
             position="top-right"
             autoClose={2000}
