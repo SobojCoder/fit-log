@@ -1,13 +1,28 @@
 "use client";
 import SavedWorkoutPlan from "@/components/savedWorkoutPlan";
 import TodayWorkoutPlan from "@/components/todayWorkoutPlan";
-import React, { useState } from "react";
+import { WorkoutContext } from "@/contexts/workoutProvider";
+import React, { useContext, useState } from "react";
 
 const MyPlanPage = () => {
   const [buttonType, setButtonType] = useState("selected");
+  const {addPlan, addToSaved} = useContext(WorkoutContext);
   const heandleUpdatedBtn = (type: "selected" | "seved") => {
     setButtonType(type);
   };
+
+  const currentPlan = buttonType === "selected" ? addPlan : addToSaved;
+
+  const totalMinutes = currentPlan.reduce(
+  (total, workout) => total + Number(workout.duration || 0),
+  0
+);
+
+const totalCalories = currentPlan.reduce(
+  (total, workout) => total + Number(workout.caloriesBurned || 0),
+  0
+);
+
 
   return (
     <div className="container mx-auto my-12">
@@ -20,15 +35,15 @@ const MyPlanPage = () => {
       <div className="border border-[#5D636F] rounded-2xl grid grid-cols-3 py-6 px-8 bg-[#13161D]">
         <div>
           <h3 className="text-[#5D646F] text-lg">Exerciese</h3>
-          <span className="text-[#CCFF00] text-6xl font-bold">0</span>
+          <span className="text-[#CCFF00] text-6xl font-bold">{currentPlan.length}</span>
         </div>
         <div className="border-l border-[#5D636F] px-8">
           <h3 className="text-[#5D646F] text-lg">Minutes</h3>
-          <span className=" text-6xl font-bold">0</span>
+          <span className=" text-6xl font-bold">{totalMinutes}</span>
         </div>
         <div className="border-l border-[#5D636F] px-8">
           <h3 className="text-[#5D646F] text-lg">Calories</h3>
-          <span className=" text-6xl font-bold">0</span>
+          <span className=" text-6xl font-bold">{totalCalories}</span>
         </div>
       </div>
 

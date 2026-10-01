@@ -2,10 +2,11 @@
 import { WorkoutContext } from "@/contexts/workoutProvider";
 import { IWorkout } from "@/types/workout.type";
 import { CalendarPlus } from "lucide-react";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { toast } from "react-toastify";
 
-const AddPlanButton = ({ workout }: { workout: IWorkout }) => {
+const AddPlanButton = ({ workout }: { workout: IWorkout }) => { 
+  const [isSelected, setIsSelected] = useState(true);
   const {addPlan , setAddPlan} = useContext(WorkoutContext)
     const heandleAddPlan= () =>{
         setAddPlan([...addPlan, workout])

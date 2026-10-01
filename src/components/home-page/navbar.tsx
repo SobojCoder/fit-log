@@ -1,12 +1,14 @@
 'use client'
 import Image from "next/image";
-import React from "react";
+import React, { useContext } from "react";
 import logo from "@/assets/logo.png";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { WorkoutContext } from "@/contexts/workoutProvider";
 
 const NavbarPage = () => {
   const pathname = usePathname();
+  const {addPlan, addToSaved}  = useContext(WorkoutContext);
   const links = (
     <>
       <li>
@@ -58,8 +60,12 @@ const NavbarPage = () => {
           </ul>
         </div>
         <div className="navbar-end gap-5">
-          <a className="">Plan</a>
-          <a className="">Saved</a>
+          <Link href='/my-plan'>
+          <button className="cursor-pointer">Plan <span className=" ml-2 px-2.5 py-1 text-[#000000] font-bold text-lg bg-[#CCFF00] rounded-3xl">{`${addPlan.length}`}</span></button>
+          </Link>
+          <Link href='/my-plan'>
+          <button className="cursor-pointer text-[#9CA3AF]">Saved <span className="ml-2 px-2.5 py-1 border-2 border-[#222630] font-bold text-lg  rounded-3xl">{`${addToSaved.length}`}</span></button>
+          </Link>
         </div>
       </div>
     </div>
