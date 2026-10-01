@@ -48,7 +48,7 @@ const NavbarPage = () => {
                 tabIndex={-1}
                 className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
                 >
-                    [links]
+                  {links}
                 </ul>
             </div>
           <Image src={logo} alt="logo" className="w-6.25 h-auto" />
