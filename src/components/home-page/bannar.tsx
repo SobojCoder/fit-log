@@ -1,23 +1,45 @@
+
 import Image from "next/image";
 import React from "react";
-import banner from "@/assets/banner.png"
+import banner from "@/assets/banner.png";
+import Link from "next/link";
 
 const BannarPage = () => {
   return (
-    <div className="container mx-auto bg-[##8A909B] my-10">
-      <div className="bg-[#15171D] py-15 px-10 rounded-xl flex justify-between items-center gap-8">
-        <div className="w-150">
-          <p className="text-[#A1CE06] text-lg mb-4">WORKOUT LIBRARY</p>
-          <h1 className="text-5xl font-bold ">TRAIN WITH INTENT. LOG EVERY SET.</h1>
-          <p className="text-lg my-5 text-[#9CA3AF]">
+    <div className="container mx-auto my-6 sm:my-8 lg:my-10 px-4">
+      <div className="bg-[#15171D] py-10 sm:py-12 lg:py-15 px-5 sm:px-8 lg:px-10 rounded-xl flex flex-col lg:flex-row justify-between items-center gap-8 lg:gap-12">
+        
+        {/* Text Content */}
+        <div className="w-full lg:w-3/5 text-center lg:text-left">
+          <p className="text-[#A1CE06] text-base sm:text-lg mb-3 sm:mb-4">
+            WORKOUT LIBRARY
+          </p>
+
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight">
+            TRAIN WITH INTENT. LOG EVERY SET.
+          </h1>
+
+          <p className="text-base sm:text-lg my-4 sm:my-5 text-[#9CA3AF] leading-relaxed">
             FitLog is a dark, no-nonsense gym companion: pick a lift, lock it
             into today&apos;s plan, and watch the week&apos;s work add up.
           </p>
-          <button className="bg-[#A1CE06] btn text-[#000000]">BROWSE WORKOUTS</button>
+
+          <Link href="#library">
+            <button className="bg-[#A1CE06] btn text-[#000000] px-6">
+              BROWSE WORKOUTS
+            </button>
+          </Link>
         </div>
-        <div>
-        <Image src={banner} alt="banner" className="w-87.5 h-auto"/>
+
+        {/* Banner Image */}
+        <div className="w-full lg:w-2/5 flex justify-center">
+          <Image
+            src={banner}
+            alt="Workout banner"
+            className="w-56 sm:w-72 lg:w-[350px] h-auto"
+          />
         </div>
+
       </div>
     </div>
   );

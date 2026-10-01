@@ -25,7 +25,7 @@ const NavbarPage = () => {
     <div className="border-b border-[#222630]">
       <div className="navbar  bg-[#000000] shadow-sm container mx-auto">
         <div className="navbar-start">
-            {/* <div className="dropdown">
+            <div className="dropdown">
                 <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
                 <svg
                     aria-label="Menu"
@@ -50,7 +50,7 @@ const NavbarPage = () => {
                 >
                     [links]
                 </ul>
-            </div> */}
+            </div>
           <Image src={logo} alt="logo" className="w-6.25 h-auto" />
           <Link href='/' className="btn btn-ghost text-2xl">FITLOG</Link>
         </div>

@@ -5,21 +5,33 @@ import Image from "next/image";
 
 const FooterPage = () => {
   return (
-    <div className="border border-[#222630] ">
-      <div className="container mx-auto py-8  ">
-        <div className="grid grid-cols-2 items-center justify-between">
-          <div className="flex">
-            <Image src={logo} alt="logo" className="w-[20px] h-auto" />
-            <Link href="/" className="btn btn-ghost text-2xl text-[#FFFFFF]">
+    <footer className="border-t border-[#222630] text-center">
+      <div className="container mx-auto px-4 py-6 sm:px-6 sm:py-8 lg:px-8">
+        <div className="flex flex-col items-center gap-4 text-center sm:flex-row sm:justify-between sm:text-left">
+          
+          {/* Logo */}
+          <div className="flex items-center">
+            <Image
+              src={logo}
+              alt="FITLOG logo"
+              className="h-auto w-5 sm:w-6"
+            />
+
+            <Link
+              href="/"
+              className="ml-2 text-xl font-bold text-white sm:text-2xl"
+            >
               FITLOG
             </Link>
           </div>
-          <p className="grid justify-end text-sm text-[#6B7280]">
+
+          {/* Copyright */}
+          <p className="text-xs leading-5 text-[#6B7280] sm:text-sm">
             © 2026 FitLog — Workout Library. Train hard, log honest.
           </p>
         </div>
       </div>
-    </div>
+    </footer>
   );
 };
 

@@ -8,7 +8,7 @@ const SavedWorkoutPlan = ({sortedSavedWorkoutPlan}:{sortedSavedWorkoutPlan: IWor
     const { addToSaved } = useContext(WorkoutContext);
 
     return (
-        <div className='my-10'>
+        <div id='savedPlan' className='my-10'>
         {addToSaved.length > 0 ? (
           <div>
             {sortedSavedWorkoutPlan.map((workout: IWorkout) => {
