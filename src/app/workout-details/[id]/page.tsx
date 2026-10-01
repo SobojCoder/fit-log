@@ -2,7 +2,7 @@ import AddPlanButton from "@/components/workoutDetails/addPlanButton";
 import SavedPlanButton from "@/components/workoutDetails/savedPlanButton";
 import { getWortkouts } from "@/lib/app";
 import { IWorkout } from "@/types/workout.type";
-import { Bookmark, CalendarPlus, Star } from "lucide-react";
+import { Star } from "lucide-react";
 import Image from "next/image";
 import React from "react";
 
@@ -22,7 +22,7 @@ const AppDetailsPage = async ({ params }: IWorkoutDetailsProps) => {
     <div className="bg-[#0F1014]  py-8 text-white">
       <div className="mx-auto grid max-w-6xl grid-cols-1 gap-8 lg:grid-cols-2">
         {/* ================= IMAGE ================= */}
-        <div className="relative h-[600px] overflow-hidden rounded-xl">
+        <div className="relative h-150 overflow-hidden rounded-xl">
           <Image
             src={workout.image}
             alt={workout.name}

@@ -51,7 +51,7 @@ const NavbarPage = () => {
                     [links]
                 </ul>
             </div> */}
-          <Image src={logo} alt="logo" className="w-[25px] h-auto" />
+          <Image src={logo} alt="logo" className="w-6.25 h-auto" />
           <Link href='/' className="btn btn-ghost text-2xl">FITLOG</Link>
         </div>
         <div className="navbar-center hidden lg:flex">

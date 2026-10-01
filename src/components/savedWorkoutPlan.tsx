@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import TodayPlanCard from './cards/todayPlanCard';
 import { IWorkout } from '@/types/workout.type';
 import { WorkoutContext } from '@/contexts/workoutProvider';
 import Link from 'next/link';
