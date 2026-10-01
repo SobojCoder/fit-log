@@ -1,11 +1,24 @@
+import { WorkoutContext } from "@/contexts/workoutProvider";
 import { IWorkout } from "@/types/workout.type";
 import { Clock3, Flame, Star } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useContext } from "react";
 import { IoIosClose } from "react-icons/io";
+import { toast } from "react-toastify";
 
 const SavedPlanCard = ({ workout }: { workout: IWorkout }) => {
+  const { addToSaved, setAddToSave } = useContext(WorkoutContext);
+  const heandleRemovePlan = (workout: IWorkout) => {
+    const restWorkoutPlan = addToSaved.filter(
+      (plan) => plan.name != workout.name,
+    );
+    setAddToSave(restWorkoutPlan);
+
+    toast.error(`${workout.name} remove to saved for later`);
+
+  };
+
   return (
     <div className="container mx-auto border border-amber-200 rounded-2xl my-3">
       <div className="grid grid-cols-2">
@@ -45,11 +58,14 @@ const SavedPlanCard = ({ workout }: { workout: IWorkout }) => {
         </div>
         <div className="flex gap-3 items-center justify-end pr-6">
           <Link href={`/workout-details/${workout.id}`}>
-          <button className=" cursor-pointer flex items-center gap-2 rounded-3xl     border border-zinc-700 px-5 py-2.5 text-xs font-medium text-zinc-300 transition hover:bg-zinc-800">
-            View Details
-          </button>
+            <button className=" cursor-pointer flex items-center gap-2 rounded-3xl     border border-zinc-700 px-5 py-2.5 text-xs font-medium text-zinc-300 transition hover:bg-zinc-800">
+              View Details
+            </button>
           </Link>
-          <IoIosClose className="font-bold text-2xl" />
+          <IoIosClose
+            onClick={() => heandleRemovePlan(workout)}
+            className="cursor-pointer font-bold text-2xl hover:text-[red]"
+          />
         </div>
       </div>
     </div>

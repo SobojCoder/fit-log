@@ -2,11 +2,33 @@
 import SavedWorkoutPlan from "@/components/savedWorkoutPlan";
 import TodayWorkoutPlan from "@/components/todayWorkoutPlan";
 import { WorkoutContext } from "@/contexts/workoutProvider";
+import { IWorkout } from "@/types/workout.type";
 import React, { useContext, useState } from "react";
 
 const MyPlanPage = () => {
   const [buttonType, setButtonType] = useState("selected");
-  const {addPlan, addToSaved} = useContext(WorkoutContext);
+  const { addPlan, addToSaved } = useContext(WorkoutContext);
+  const [sortby, setSortby] = useState<"duration" | "calories" | "rating">(
+    "duration",
+  );
+
+  const sortWorkouts = (workout:IWorkout[]) =>{
+
+    const sortedWorkouts =[...workout];
+    if(sortby === "duration"){
+      sortedWorkouts.sort((a,b) => b.duration - a.duration);
+    }else if(sortby === "calories"){
+      sortedWorkouts.sort((a,b) => b.caloriesBurned - a.caloriesBurned);
+    }else if(sortby === "rating"){
+      sortedWorkouts.sort((a,b) => b.rating - a.rating);
+    }
+    return sortedWorkouts;
+
+  }
+
+  const sortedTodayWorkoutPlan = sortWorkouts(addPlan);
+  const sortedSavedWorkoutPlan = sortWorkouts(addToSaved);
+
   const heandleUpdatedBtn = (type: "selected" | "seved") => {
     setButtonType(type);
   };
@@ -14,15 +36,14 @@ const MyPlanPage = () => {
   const currentPlan = buttonType === "selected" ? addPlan : addToSaved;
 
   const totalMinutes = currentPlan.reduce(
-  (total, workout) => total + Number(workout.duration || 0),
-  0
-);
+    (total, workout) => total + Number(workout.duration || 0),
+    0,
+  );
 
-const totalCalories = currentPlan.reduce(
-  (total, workout) => total + Number(workout.caloriesBurned || 0),
-  0
-);
-
+  const totalCalories = currentPlan.reduce(
+    (total, workout) => total + Number(workout.caloriesBurned || 0),
+    0,
+  );
 
   return (
     <div className="container mx-auto my-12">
@@ -35,7 +56,9 @@ const totalCalories = currentPlan.reduce(
       <div className="border border-[#5D636F] rounded-2xl grid grid-cols-3 py-6 px-8 bg-[#13161D]">
         <div>
           <h3 className="text-[#5D646F] text-lg">Exerciese</h3>
-          <span className="text-[#CCFF00] text-6xl font-bold">{currentPlan.length}</span>
+          <span className="text-[#CCFF00] text-6xl font-bold">
+            {currentPlan.length}
+          </span>
         </div>
         <div className="border-l border-[#5D636F] px-8">
           <h3 className="text-[#5D646F] text-lg">Minutes</h3>
@@ -71,14 +94,17 @@ const totalCalories = currentPlan.reduce(
         <div className="flex items-center gap-2">
           <span className="text-xs text-[#737985]">Sort By</span>
 
-          <select className="rounded-lg border border-[#343A47] bg-[#15181F] px-3 py-2 text-xs text-white outline-none">
-            <option>Duration</option>
-            <option>Calories</option>
-            <option>Rating</option>
+          <select
+            value={sortby}
+            onChange={(e) => setSortby(e.target.value as "duration" | "calories" | "rating")}
+           className="rounded-lg border border-[#343A47] bg-[#15181F] px-3 py-2 text-xs text-white outline-none">
+            <option value={"duration"}>Duration</option>
+            <option value={"calories"}>Calories</option>
+            <option value={"rating"}>Rating</option>
           </select>
         </div>
       </div>
-      {buttonType === "selected" ? <TodayWorkoutPlan /> : <SavedWorkoutPlan />}
+      {buttonType === "selected" ? <TodayWorkoutPlan sortedTodayWorkoutPlan={sortedTodayWorkoutPlan} /> : <SavedWorkoutPlan sortedSavedWorkoutPlan={sortedSavedWorkoutPlan} />}
 
       {/* selected card */}
     </div>
@@ -86,4 +112,3 @@ const totalCalories = currentPlan.reduce(
 };
 
 export default MyPlanPage;
-

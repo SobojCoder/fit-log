@@ -2,10 +2,21 @@ import { IWorkout } from "@/types/workout.type";
 import { Clock3, Flame, Star } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useContext } from "react";
 import { IoIosClose } from "react-icons/io";
+import { WorkoutContext } from "@/contexts/workoutProvider";
+import { toast } from "react-toastify";
 
 const TodayPlanCard = ({ workout }: { workout: IWorkout }) => {
+    const {addPlan, setAddPlan} = useContext(WorkoutContext);
+  const heandleRemovePlan =(workout:IWorkout) =>{
+          const restWorkoutPlan = addPlan.filter((plan) => plan.name != workout.name) ;
+          setAddPlan(restWorkoutPlan);
+
+          toast.error(`${workout.name} remove to today's plan`)
+
+      }
+
   return (
     <div className="container mx-auto border border-amber-200 rounded-2xl my-3">
       <div className="grid grid-cols-2">
@@ -52,7 +63,9 @@ const TodayPlanCard = ({ workout }: { workout: IWorkout }) => {
           <button className="cursor-pointer flex items-center gap-2 rounded-3xl bg-[#c6ff00] px-5 py-2.5 text-xs font-bold text-black transition hover:bg-[#b8f000]">
             Mark as Done
           </button>
-          <IoIosClose className="font-bold text-2xl" />
+          <IoIosClose
+                      onClick={() => heandleRemovePlan(workout)}
+                      className="cursor-pointer font-bold text-2xl hover:text-[red]" />
         </div>
       </div>
     </div>

@@ -4,7 +4,7 @@ import TodayPlanCard from './cards/todayPlanCard';
 import { IWorkout } from '@/types/workout.type';
 import Link from 'next/link';
 
-const TodayWorkoutPlan = () => {
+const TodayWorkoutPlan = ({sortedTodayWorkoutPlan}:{sortedTodayWorkoutPlan: IWorkout[]}) => {
 
 const { addPlan } = useContext(WorkoutContext);
 
@@ -12,7 +12,7 @@ const { addPlan } = useContext(WorkoutContext);
         <div>
         {addPlan.length > 0 ? (
           <div>
-            {addPlan.map((workout: IWorkout) => {
+            {sortedTodayWorkoutPlan.map((workout: IWorkout) => {
               return <TodayPlanCard key={workout.id} workout={workout} />;
             })}
           </div>

@@ -5,14 +5,14 @@ import { WorkoutContext } from '@/contexts/workoutProvider';
 import Link from 'next/link';
 import SavedPlanCard from './cards/savedPlanCard';
 
-const SavedWorkoutPlan = () => {
+const SavedWorkoutPlan = ({sortedSavedWorkoutPlan}:{sortedSavedWorkoutPlan: IWorkout[]}) => {
     const { addToSaved } = useContext(WorkoutContext);
 
     return (
         <div className='my-10'>
         {addToSaved.length > 0 ? (
           <div>
-            {addToSaved.map((workout: IWorkout) => {
+            {sortedSavedWorkoutPlan.map((workout: IWorkout) => {
               return <SavedPlanCard key={workout.id} workout={workout} />;
             })}
           </div>

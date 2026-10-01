@@ -7,10 +7,20 @@ import { toast } from "react-toastify";
 
 const SavedPlanButton = ({ workout }: { workout: IWorkout }) => {
   const {addToSaved , setAddToSave} = useContext(WorkoutContext)
-    const heandleAddToSaved= () =>{
-        setAddToSave([...addToSaved, workout]);
-        toast.success(`${workout.name} add to saved for later`);
-    }
+
+        const heandleAddToSaved= () =>{
+              
+              const chackSavedWorkout: IWorkout[] = addToSaved.filter((plan) => plan.name !== workout.name);
+              
+              if(addToSaved.some((plan)=> plan.name === workout.name)){
+                toast.info(`${workout.name} is alredy add in Saved for later!`);
+              }else{
+                toast.success(`${workout.name} add to Saved for later`);
+                
+              }
+              setAddToSave([...chackSavedWorkout, workout]);
+            }
+    
   return (
     <div>
       <button
