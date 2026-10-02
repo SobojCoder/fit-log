@@ -4,9 +4,9 @@ FitLog is a modern and responsive workout library web application built with **N
 
 ## 🚀 Live Demo
 
-🔗 **Live Website:** Add your deployed website URL here
+🔗 **Live Website:** https://fit-log-iota-lemon.vercel.app
 
-🔗 **GitHub Repository:** Add your GitHub repository URL here
+🔗 **GitHub Repository:** https://github.com/SobojCoder/fit-log
 
 ---
 
