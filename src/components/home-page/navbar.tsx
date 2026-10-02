@@ -22,8 +22,8 @@ const NavbarPage = () => {
   );
   return (
 
-    <div className="sticky top-0 z-50 border-b border-[#222630]">
-      <div className="navbar  bg-[#000000] shadow-sm container mx-auto">
+    <div className="sticky top-0 z-50 bg-[#000000] border-b border-[#222630]">
+      <div className="navbar shadow-sm container mx-auto">
         <div className="navbar-start">
             <div className="dropdown">
                 <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
